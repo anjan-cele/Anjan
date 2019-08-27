@@ -1,0 +1,3073 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8"> <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9"> <![endif]-->
+<!--[if gt IE 9]>  <html> <![endif]-->
+<!--[if !IE]><!-->
+<html>
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>HotelHub v11.0</title>
+    <!-- Bootstrap -->
+    <link href="media/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Structure: Global -->
+    <link href="media/css/global.css" rel="stylesheet">
+    <!-- Typography: Fonts -->
+    <link href="media/css/fonts.css" rel="stylesheet">
+    <link href="~/media/themes/cwt-v1/default.css" rel="stylesheet">
+    @*<link href="media/themes/Sabre/default.css" rel="stylesheet">*@
+    <!-- Visual: Theme
+    <link href="media/themes/cwt-v1/default.css" rel="stylesheet">-->
+    <!--Jquery UI-->
+    <!-- Temporary Bug fix and hacks -->
+    <link href="media/css/temp.css" rel="stylesheet">
+    <!--Jquery UI-->
+    <link rel="stylesheet" href="media/css/ui/jquery.ui.all.css">
+    <link rel="stylesheet" href="media/css/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="media/css/datepickerNew.css">
+    <!--Jquery UI-->
+    <!-- HTML5 Shiv and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+          <script src="js/ie.js"></script>
+        <![endif]-->
+    <!-- Modernizr (Should be on Head)-->
+    <script src="js/modernizr.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB0AWI2ZV6c9z1raL85CzH3xHmctI09CEs&sensor=false"></script>
+</head>
+
+<style>
+    /*.filter-label { background: #d0f2f1; }*/
+
+    .xtr-height {
+        height: 192px !important;
+    }
+
+    .styled-li li {
+        padding: 2px 0px;
+    }
+
+        .styled-li li span.glyphicon-ok {
+            display: none;
+        }
+
+        .styled-li li a {
+            padding-left: 0px;
+        }
+
+        .styled-li li.selected {
+            background: #e1e1e1;
+        }
+
+            .styled-li li.selected span.glyphicon-ok {
+                display: block;
+                color: teal;
+                padding-right: 10px;
+            }
+
+    .msgLctn {
+        line-height: 46px;
+    }
+
+    .modal-dialog {
+        overflow-y: initial !important;
+    }
+
+    .modal-body {
+        height: 450px;
+        overflow-y: auto;
+    }
+</style>
+<body>
+    <!-- Fake Body: Everything inside! -->
+    <div class="fake-body">
+        <header>
+            <div class="container-fluid">
+                <!--Application Logo-->
+                <a class="navbar-brand" href="#">
+                </a>
+                <!-- Cancel/Modify PNR-->
+                <div class="form-inline pull-right has-margin-md-vertical hidden-xs">
+                    <div class="form-group ">
+                        <div class="hidden-sm">Cancel/Modify</div>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="PNR / Booking Ref.">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button" data-toggle="tooltip" title="" data-original-title="Go" rel="tooltip" data-placement="bottom" onClick="window.location.href = 'booking-details.html'"><span>Go</span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--Status Notification-->
+                <div class="page-stats pull-right light-tooltip hidden-xs">
+                    <div class="dropdown">
+                        <div class="notification enquiry" title="" role="button" data-toggle="dropdown" data-target="#" data-original-title="Enquiries" rel="tooltip" data-placement="bottom">
+                            <a href="#">
+                                147
+                            </a>
+                        </div>
+                        <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+                            <div class="notification-heading">
+                                <span class="drp_arow"></span> Enquiries
+                            </div>
+                            <div class="notifications-wrapper">
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Jack Donald</h4>
+                                        <p class="item-info">
+                                            UK Staff - <span>RD BLU EDWARDIAN HEATHROW HOTEL</span>
+                                        </p>
+                                        <p class="item-info">CB150007523-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Joe Black</h4>
+                                        <p class="item-info">
+                                            hotelhub - <span>HOTEL CHANCERY</span>
+                                        </p>
+                                        <p class="item-info">CB140007315-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Kevin Richardson</h4>
+                                        <p class="item-info">
+                                            UK STAFF - <span>INTERCONTINENTAL LONDON PARK LANE</span>
+                                        </p>
+                                        <p class="item-info">CB140007320-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Brian Wallace</h4>
+                                        <p class="item-info">
+                                            hotelhub - APOLLO - <span>THE CHANCERY PAVILION</span>
+                                        </p>
+                                        <p class="item-info">CB150007523-1</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <li class="divider"></li>
+                            <div class="notification-footer text-center">
+                                <a href="Notification-Page.html">
+                                    View all
+                                </a>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="notification confirmation" title="" role="button" data-toggle="dropdown" data-target="#" data-original-title="Confirmations in progress" rel="tooltip" data-placement="bottom">
+                            <a href="#">
+                                156
+                            </a>
+                        </div>
+                        <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+                            <div class="notification-heading">
+                                <span class="drp_arow"></span> Confirmations in progress
+                            </div>
+                            <div class="notifications-wrapper">
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Brian Wallace</h4>
+                                        <p class="item-info">
+                                            hotelhub - APOLLO - <span>THE CHANCERY PAVILION</span>
+                                        </p>
+                                        <p class="item-info">CB150007523-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Kevin Richardson</h4>
+                                        <p class="item-info">
+                                            UK STAFF - <span>INTERCONTINENTAL LONDON PARK LANE</span>
+                                        </p>
+                                        <p class="item-info">CB140007320-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Joe Black</h4>
+                                        <p class="item-info">
+                                            hotelhub - <span>HOTEL CHANCERY</span>
+                                        </p>
+                                        <p class="item-info">CB140007315-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Jack Donald</h4>
+                                        <p class="item-info">
+                                            UK Staff - <span>RD BLU EDWARDIAN HEATHROW HOTEL</span>
+                                        </p>
+                                        <p class="item-info">CB150007523-1</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <li class="divider"></li>
+                            <div class="notification-footer text-center">
+                                <a href="Notification-Page.html">
+                                    View all
+                                </a>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="notification cancellation" title="" role="button" data-target="#" data-original-title="Cancellations in progress" rel="tooltip" data-placement="bottom">
+                            <a href="#">
+                                0
+                            </a>
+                        </div>
+                        <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+                            <div class="notifications-wrapper">
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Jack Donald</h4>
+                                        <p class="item-info">
+                                            UK Staff - <span>RD BLU EDWARDIAN HEATHROW HOTEL</span>
+                                        </p>
+                                        <p class="item-info">CB150007523-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Jack Donald</h4>
+                                        <p class="item-info">
+                                            UK Staff - <span>RD BLU EDWARDIAN HEATHROW HOTEL</span>
+                                        </p>
+                                        <p class="item-info">CB150007523-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Jack Donald</h4>
+                                        <p class="item-info">
+                                            UK Staff - <span>RD BLU EDWARDIAN HEATHROW HOTEL</span>
+                                        </p>
+                                        <p class="item-info">CB150007523-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Jack Donald</h4>
+                                        <p class="item-info">
+                                            UK Staff - <span>RD BLU EDWARDIAN HEATHROW HOTEL</span>
+                                        </p>
+                                        <p class="item-info">CB150007523-1</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <li class="divider"></li>
+                            <div class="notification-footer text-center">
+                                <a href="#">
+                                    View all <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                                </a>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="notification modification" title="" role="button" data-target="#" data-original-title="Modification in progress" rel="tooltip" data-placement="bottom">
+                            <a href="#">
+                                0
+                            </a>
+                        </div>
+                        <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+                            <div class="notification-heading">
+                                <span class="drp_arow"></span> Confirmations in progress
+                            </div>
+                            <div class="notifications-wrapper">
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Brian Wallace</h4>
+                                        <p class="item-info">
+                                            hotelhub - APOLLO - <span>THE CHANCERY PAVILION</span>
+                                        </p>
+                                        <p class="item-info">CB150007523-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Kevin Richardson</h4>
+                                        <p class="item-info">
+                                            UK STAFF - <span>INTERCONTINENTAL LONDON PARK LANE</span>
+                                        </p>
+                                        <p class="item-info">CB140007320-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Joe Black</h4>
+                                        <p class="item-info">
+                                            hotelhub - <span>HOTEL CHANCERY</span>
+                                        </p>
+                                        <p class="item-info">CB140007315-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Jack Donald</h4>
+                                        <p class="item-info">
+                                            UK Staff - <span>RD BLU EDWARDIAN HEATHROW HOTEL</span>
+                                        </p>
+                                        <p class="item-info">CB150007523-1</p>
+                                    </div>
+                                </a>
+                            </div>
+                            <li class="divider"></li>
+                            <div class="notification-footer text-center">
+                                <a href="Notification-Page.html">
+                                    View all
+                                </a>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <div class="notification fax" title="" role="button" data-toggle="dropdown" data-target="#" data-original-title="Failed faxes" rel="tooltip" data-placement="bottom">
+                            <a href="#">
+                                2
+                            </a>
+                        </div>
+                        <ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel">
+                            <div class="notification-heading">
+                                <span class="drp_arow"></span> Failed faxes
+                            </div>
+                            <div class="notifications-wrapper">
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Joe Black</h4>
+                                        <p class="item-info">
+                                            hotelhub - <span>HOTEL CHANCERY</span>
+                                        </p>
+                                        <p class="item-info">CB140007315-1</p>
+                                    </div>
+                                </a>
+                                <a class="content" href="booking-details.html">
+                                    <div class="notification-item">
+                                        <h4 class="item-title">Jack Donald</h4>
+                                        <p class="item-info">
+                                            UK Staff - <span>RD BLU EDWARDIAN HEATHROW HOTEL</span>
+                                        </p>
+                                        <p class="item-info">CB150007523-1</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-wrap">
+                <div class="container-fluid">
+                    <div class="navbar navbar-themed" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="navbar-text navbar-right">
+                            Welcome <span class="enlarge">Joe Bloggs </span>
+                            <a href="login.html" class="navbar-link">
+                                Sign out
+                            </a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
+                                <li>
+                                    <a href="home.html">
+                                        Home
+                                    </a>
+                                </li>
+                                <li class="active">
+                                    <a href="step1.html">
+                                        Hotels
+                                    </a>
+                                </li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        More <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="my-profile.html">
+                                                My profile
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="User-profile.html">
+                                                Modify user profiles
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li class="dropdown-header">BOOKING</li>
+                                        <li>
+                                            <a href="step1.html">
+                                                Search hotels
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="recent-bookings.html">
+                                                Recent bookings
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="booking-history.html">
+                                                Booking history
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="booking-enquiry.html">
+                                                Booking enquiry
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="3rd-party-bookings.html">
+                                                3rd Party bookings
+                                            </a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li class="dropdown-header">QUICK LINKS</li>
+                                        <li>
+                                            <a href="fax-history.html">
+                                                Fax status
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="home.html#pnr-read">
+                                                PNR read
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="Recommend-new-hotel.html">
+                                                Recommend new hotel
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="home.html#iata-location">
+                                                IATA location
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="home.html#dtr-history">
+                                                DTR History
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="home.html#currency-converter">
+                                                Currency convertor
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="correspondence.html">
+                                                Correspondence
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="home.html#contact-address">
+                                                Contact us
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- // End .nav-collapse -->
+                    </div>
+                    <!-- // End .navbar-default -->
+                </div>
+                <!-- // End .container -->
+            </div>
+        </header>
+        <!-- // End header -->
+        <div class="container-fluid">
+            <div class="page-head has-margin-bottom">
+                <div class="wizard pull-right">
+                    <a class="current" href="Step1.html" target="_self">
+                        Search <span aria-hidden="true" class="hhicon-arrow"></span>
+                    </a>
+                    <a class="center text-muted" href="#">
+                        Book <span aria-hidden="true" class="hhicon-arrow"></span>
+                    </a>
+                    <a href="#" class="last-child text-muted">
+                        Confirm
+                    </a>
+                </div>
+                <h1 class="hidden-xs hidden-sm">Search for a hotel</h1>
+                <div class="alert alert-warning alert-dismissible msgLctn" role="alert" style="display:none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong>location added</strong>
+                </div>
+            </div>
+            <!--// End Page Head -->
+            <section class="step-1 clearfix">
+                <!-- Select customer-->
+                <div class="text-right"><span class="text-danger">*</span> indicates mandatory field</div>
+                <div class="block has-margin-bottom primary-bg select-customer">
+                    <form class="form" role="form">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <h6>Select customer<span class="text-danger">*</span></h6>
+                            </div>
+                            <div class="form-group col-md-4 ">
+                                <label for="customer">Type in customer name or reference number</label>
+                                <input id="customer" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group col-sm-6 col-md-3 ">
+                                <label for="pnr">Enter PNR</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="pnr">
+                                    <span class="input-group-btn" data-toggle="tooltip" title="" data-original-title="View PNR" rel="tooltip" data-placement="bottom">
+                                        <button class="btn btn-default dft-icon-style " type="button" data-toggle="modal" data-target="#pnr-read-2">
+                                            <span aria-hidden="true" class="hhicon-eye basex"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                                <!-- /input-group -->
+                            </div>
+                            <div class="form-group col-sm-4 col-md-2 ">
+                                <div class="input-group">
+                                    <label for="rate-a">View/edit rate plan code</label>
+                                    <input type="text" class="form-control col-md-5 col-lg-1">
+                                    <!--<span class="input-group-btn"  title="" data-original-title="Search" rel="tooltip" data-placement="bottom">
+                                    <button class="btn btn-default dft-icon-style " type="button" > <span aria-hidden="true" class="hhicon-arrow"></span> </button>
+                                    </span>-->
+                                </div>
+                                <!-- /input-group -->
+
+                            </div>
+                            <div class="form-group col-sm-4 col-md-2">
+                                <button id="btnSendNotification" type="button" class="btn btn-primary btn-lg" data-toggle="modal"
+                                        data-target="#SendPushNotification">
+                                    <span>Send Notification</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p>
+                                Agency: Customer Service Centre
+                                <a data-toggle="modal" data-target="#change-agency" href="#">
+                                    Change
+                                </a>
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <p>
+                                OID: LON123456
+                                <a href="#" data-toggle="modal" data-target="#agency-oid">
+                                    Change
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!--// End Select customer -->
+                <div class="main-search-wrap has-margin-bottom">
+                    <div class="container-md-height main-search-inner has-min-width-full">
+                        <div class="col-md-8 col-md-height col-top main-search primary-bg lyt-shadow-normal">
+                            <form role="form">
+                                <div class="row label-issue">
+                                    <div class="col-md-9 col-lg-10 form-group">
+                                        <h6>Destination<span class="text-danger">*</span></h6>
+                                        <div class="input-group input-extra-lg">
+                                            <div class="input-group-btn input-group-lg">
+                                                <div class="input-group-btn">
+                                                    <button type="button" class="btn btn-default dropdown-toggle dft-icon-style" data-toggle="dropdown">
+                                                        All <span class="hhicon-Arrowdown"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu keep-open has-icon" role="menu">
+                                                        <li>
+                                                            <a href="#">
+                                                                City
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                Airport
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                Hotel
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                Brand / chain name
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="">
+                                                <input id="Destination" type="text" onblur="myFunction();" class="form-control" placeholder="Type in city, airport, hotel name or point of interest">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 col-lg-2 xs-hidden">
+                                        <h6>&nbsp;</h6>
+                                        <div class="input-group input-group-lg">
+                                            <span class="input-group-btn" data-toggle="tooltip" title="" data-original-title="Find on map" rel="tooltip" data-placement="bottom">
+                                                <button class="btn btn-default btn-normal  mdi-action-grade" type="button" data-toggle="modal" data-target="#MapModel">
+                                                    <span aria-hidden="true" class="hhicon-location onehalfx"></span>
+                                                </button>
+                                            </span>
+                                            <span class="input-group-btn" data-toggle="tooltip" title="" data-original-title="Save location" rel="tooltip" data-placement="bottom">
+                                                <button class="btn btn-default btn-normal  mdi-action-grade" type="button" data-toggle="" data-target="" id="d">
+                                                    <span aria-hidden="true" class="hhicon-download onehalfx"></span>
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <!-- /.col-lg-6 -->
+                                </div>
+
+                                <!-- /.row -->
+                                <div class="row">
+                                    <div class="col-sm-6 col-md-4 input-daterange" id="datepicker">
+                                        <div class="row">
+                                            <div class="form-group col-sm-6 col-md-6 ">
+                                                <label for="checkIn">Check-in</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="checkIn" name="start">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default dft-icon-style " type="button">
+                                                            <span aria-hidden="true" class="hhicon-calendar basex"></span>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                                <!-- /input-group -->
+                                            </div>
+                                            <div class="form-group col-sm-6 col-md-6 ">
+                                                <label for="checkout">Check-out</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="end" id="checkOut">
+                                                    <span class="input-group-btn">
+                                                        <button class="btn btn-default dft-icon-style " type="button">
+                                                            <span aria-hidden="true" class="hhicon-calendar basex"></span>
+                                                        </button>
+                                                    </span>
+                                                </div>
+                                                <!-- /input-group -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-4 col-sm-2 col-md-2 ">
+                                        <label for="nights">Nights</label>
+                                        <input type="text" class="form-control" id="nights" readonly disabled>
+                                        <!-- /input-group -->
+                                    </div>
+                                    <div class="form-group col-xs-4 col-sm-2 col-md-2 ">
+                                        <label for="nights" class="label-sel">Rooms</label>
+                                        <select class="form-control sel">
+                                            <option value="1"></option>
+                                            <option value="2">01</option>
+                                            <option value="3">02</option>
+                                            <option value="4">03</option>
+                                        </select>
+                                        <!-- /input-group -->
+                                    </div>
+                                    <div class="form-group col-xs-4 col-sm-2 col-md-2 ">
+                                        <label for="nights" class="label-sel">Guests</label>
+                                        <select class="form-control sel">
+                                            <option value="1"></option>
+                                            <option value="2">01</option>
+                                            <option value="3">02</option>
+                                            <option value="4">03</option>
+                                        </select>
+                                        <!-- /input-group -->
+                                    </div>
+                                </div>
+
+                                <!-- /.row -->
+                                <!--<h5 class="collapsed has-margin-xs-vertical"> <span class="acting-link" data-toggle="collapse" data-target="#advanced-search">Advanced search <span class="hhicon hhicon-toggle-arrow"></span></span> </h5>-->
+                                <h5 class="acting-link collapsed has-margin-xs-vertical" data-toggle="collapse" data-target="#advanced-search">
+                                    Advanced search <span class="hhicon hhicon-toggle-arrow"></span>
+                                </h5>
+                                <div id="advanced-search" class="row collapse">
+                                    <div class="form-group filter-content-single col-sm-12 col-lg-6">
+                                        <div class="filter-label acting-link">
+                                            <label>Facillities </label>
+                                            <label class="filter-count no-wrap-lg">
+                                                Item selected <span class="filter-count">9</span>
+                                                <a href="#" class="has-margin-xs-left">
+                                                    Reset
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <div class="collapse in label-issue">
+                                            <div class="has-margin-xs-bottom ">
+                                                <label for="Type in Facillities">Facillities </label>
+                                                <input type="text" class="form-control" size="40" id="Type in Facillities">
+                                            </div>
+                                            <div class="scrollbar-wrap" id="scrollbar6">
+                                                <div class="scrollbar">
+                                                    <div class="track">
+                                                        <div class="thumb">
+                                                            <div class="end"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="viewport">
+                                                    <div class="overview">
+                                                        <div class="row">
+                                                            <div class="col-md-5">
+                                                                <p>
+                                                                    <input type="checkbox" checked id="ch1">
+                                                                    <label for="ch1">Bar </label>
+                                                                </p>
+                                                                <div class="clearfix"></div>
+                                                                <p>
+                                                                    <input type="checkbox" id="ch2">
+                                                                    <label for="ch2">Business center </label>
+                                                                </p>
+                                                                <div class="clearfix"></div>
+                                                                <p>
+                                                                    <input type="checkbox" id="ch3">
+                                                                    <label for="ch3">Concierge </label>
+                                                                </p>
+                                                                <div class="clearfix"></div>
+                                                                <p>
+                                                                    <input type="checkbox" id="ch4">
+                                                                    <label for="ch4">Convention center </label>
+                                                                </p>
+                                                                <div class="clearfix"></div>
+                                                                <p>
+                                                                    <input type="checkbox" id="ch5">
+                                                                    <label for="ch5">Data port </label>
+                                                                </p>
+                                                                <div class="clearfix"></div>
+                                                                <p>
+                                                                    <input type="checkbox" id="ch6">
+                                                                    <label for="ch6">Bar </label>
+                                                                </p>
+                                                                <div class="clearfix"></div>
+                                                                <p>
+                                                                    <input type="checkbox" id="ch7">
+                                                                    <label for="ch7">Business center </label>
+                                                                </p>
+                                                                <div class="clearfix"></div>
+                                                                <p>
+                                                                    <input type="checkbox" id="ch8">
+                                                                    <label for="ch8">Concierge </label>
+                                                                </p>
+                                                                <div class="clearfix"></div>
+                                                                <p>
+                                                                    <input type="checkbox" id="ch9">
+                                                                    <label for="ch9">Bar </label>
+                                                                </p>
+                                                                <div class="clearfix"></div>
+                                                                <p>
+                                                                    <input type="checkbox" id="ch10">
+                                                                    <label for="ch10">Convention center </label>
+                                                                </p>
+                                                                <div class="clearfix"></div>
+                                                                <p>
+                                                                    <input type="checkbox" id="ch11">
+                                                                    <label for="ch11">Data port </label>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-7">
+                                                                <div class="checkbox">
+                                                                    <p>
+                                                                        <input type="checkbox" id="ch12">
+                                                                        <label for="ch12">WiFi </label>
+                                                                    </p>
+                                                                    <div class="clearfix"></div>
+                                                                    <p>
+                                                                        <input type="checkbox" id="ch13">
+                                                                        <label for="ch13">Restaurant </label>
+                                                                    </p>
+                                                                    <div class="clearfix"></div>
+                                                                    <p>
+                                                                        <input type="checkbox" id="ch14">
+                                                                        <label for="ch14">Local Calls </label>
+                                                                    </p>
+                                                                    <div class="clearfix"></div>
+                                                                    <p>
+                                                                        <input type="checkbox" id="ch15">
+                                                                        <label for="ch15">Dry cleaning </label>
+                                                                    </p>
+                                                                    <div class="clearfix"></div>
+                                                                    <p>
+                                                                        <input type="checkbox" id="ch16">
+                                                                        <label for="ch16">Dining Room </label>
+                                                                    </p>
+                                                                    <div class="clearfix"></div>
+                                                                    <p>
+                                                                        <input type="checkbox" id="ch17">
+                                                                        <label for="ch17">Jacuzzi </label>
+                                                                    </p>
+                                                                    <div class="clearfix"></div>
+                                                                    <p>
+                                                                        <input type="checkbox" id="ch18">
+                                                                        <label for="ch18">Childrens program </label>
+                                                                    </p>
+                                                                    <div class="clearfix"></div>
+                                                                    <p>
+                                                                        <input type="checkbox" id="ch19">
+                                                                        <label for="ch19">Shuttle </label>
+                                                                    </p>
+                                                                    <div class="clearfix"></div>
+                                                                    <p>
+                                                                        <input type="checkbox" id="ch20">
+                                                                        <label for="ch20">Non-smoking rooms available </label>
+                                                                    </p>
+                                                                    <div class="clearfix"></div>
+                                                                    <p>
+                                                                        <input type="checkbox" id="ch21">
+                                                                        <label for="ch21">High Speed Internet </label>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group filter-content-single col-sm-6 col-lg-3">
+                                        <div class="filter-label">
+                                            <label>Destinations </label>
+                                        </div>
+                                        <div class="collapse in">
+                                            <div class="scrollbar-wrap" id="scrollbar7">
+                                                <div class="scrollbar">
+                                                    <div class="track">
+                                                        <div class="thumb">
+                                                            <div class="end"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="viewport xtr-height">
+                                                    <div class="overview">
+                                                        <ul class="list-unstyled has-padding-xs-left styled-li">
+                                                            <li>
+                                                                <a href="#">
+                                                                    London, United Kingdom
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    Paris, France
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    Bossembl, Central africa
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    Community of Madrid, Spain
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    South carolina, United states
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    London, United Kingdom
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    Paris, France
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    Bossembl, Central africa
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    Community of Madrid, Spain
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    South carolina, United states
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group filter-content-single col-sm-6 col-lg-3">
+                                        <div class="filter-label">
+                                            <label>Customer office location </label>
+                                        </div>
+                                        <div class="collapse in">
+                                            <div class="scrollbar-wrap" id="scrollbar8">
+                                                <div class="scrollbar">
+                                                    <div class="track">
+                                                        <div class="thumb">
+                                                            <div class="end"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="viewport xtr-height">
+                                                    <div class="overview">
+                                                        <ul class="list-unstyled has-padding-xs-left styled-li">
+                                                            <li>
+                                                                <a href="#">
+                                                                    Bossembl, Central africa
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    Community of Madrid, Spain
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    South carolina, United states
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    London, United Kingdom
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    Paris, France
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    Bossembl, Central africa
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    Community of Madrid, Spain
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    South carolina, United states
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    London, United Kingdom
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    Paris, France
+                                                                </a>
+                                                                <span class="glyphicon glyphicon-ok pull-right"></span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--// End Advanced Search-->
+                            </form>
+                        </div>
+                        <!--// End Main Search-->
+                        <!-- Suggestion Block -->
+                        <div class="col-md-4 col-md-height col-top hidden-xs hidden-sm suggestion-block secondary-bg lyt-shadow-normal">
+                            <div class="row">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs nav-justified" role="tablist">
+                                    <li class="active">
+                                        <a href="#time-weather" role="tab" data-toggle="tab">
+                                            Weather
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="recentFn" href="#recent-bookings" role="tab" data-toggle="tab">
+                                            Spa
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#upcoming-events" role="tab" data-toggle="tab">
+                                            Events
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#Restaurants" role="tab" data-toggle="tab">
+                                            Restaurants
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="recentSights" href="#recent-sights" role="tab" data-toggle="tab">
+                                            Sights
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- Tab panes -->
+                            <div class="tab-content has-margin-top">
+                                <div class="tab-pane" id="recent-bookings">
+                                    <marquee onmouseover="this.stop()" onmouseout="this.start()" direction="up">
+                                        <ul id="ul_spa" class="event-book-list">                                            
+                                        </ul>
+                                    </marquee>
+                                    <p>
+                                        <div class="has-margin-xs-vertical pull-right">
+                                            <a href="#" data-toggle="modal" data-target="#Spa-model">
+                                                Read More
+                                            </a>
+                                        </div>
+                                    </p>
+
+                                </div>
+                                <div class="tab-pane" id="upcoming-events">
+                                    <marquee onmouseover="this.stop()" onmouseout="this.start()" direction="up">
+                                        <ul id="Ul_upcoming-events" class="event-book-list"></ul>
+                                    </marquee>
+                                    <p>
+                                        <div class="has-margin-xs-vertical pull-right">
+                                            <a href="#" data-toggle="modal" data-target="#sideModalTRSuccessDemo">
+                                                Read More
+                                            </a>
+                                        </div>
+                                    </p>
+                                </div>
+                                <div class="tab-pane active" id="time-weather">
+                                    <div class="row">
+                                        <div class="col-md-6 tab-time has-margin-xs-bottom">
+                                            <p class="tab-icon-holder">
+                                                <span aria-hidden="true" class="hhicon-clock threex"></span>
+                                            </p>
+                                            <h3 class="time-text">04:00 pm </h3>
+                                            <p class="text-muted has-no-margin">Thursday</p>
+                                        </div>
+                                        <div class="col-md-6 tab-weather has-margin-xs-bottom">
+                                            <p class="tab-icon-holder">
+                                                <span aria-hidden="true" class="hhicon-sun-stroke threex"></span>
+                                            </p>
+                                            <h3 class="time-text">33 °C </h3>
+                                            <p class="text-muted has-no-margin">Mostly cloudy</p>
+                                        </div>
+                                    </div>
+                                    <!--// End Row -->
+                                    <div class="row text-center visible-lg-block">
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled">
+                                                <li>Humidity: 53%</li>
+                                                <li>Visibility: 10.0 miles</li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="list-unstyled">
+                                                <li>Wind: 17 km/h Variable</li>
+                                                <li>Pressure: 1017 hPa</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <!--// End Row -->
+                                </div>
+                                <div class="tab-pane" id="Restaurants">
+                                    <marquee onmouseover="this.stop()" onmouseout="this.start()" direction="up">
+                                        <ul id="ul_resturant" class="event-book-list"></ul>
+                                    </marquee>
+                                    <p>
+                                        <div class="has-margin-xs-vertical pull-right">
+                                            <a href="#" data-toggle="modal" data-target="#fullHeightModalRight">
+                                                Read More
+                                            </a>
+                                        </div>
+                                    </p>
+                                </div>
+                                <div class="tab-pane" id="recent-sights">
+                                    <marquee onmouseover="this.stop()" onmouseout="this.start()" direction="up">
+                                        <ul id="ul_sight" class="event-book-list"></ul>
+                                    </marquee>
+                                    <p>
+                                        <div class="has-margin-xs-vertical pull-right">
+                                            <a href="#" data-toggle="modal" data-target="#visiting-place-model">
+                                                Read More
+                                            </a>
+                                        </div>
+                                    </p>
+
+                                </div>
+                            </div>
+                            <!--// End Tab Content-->
+                        </div>
+                        <!--// End Suggestion Block -->
+                    </div>
+                </div>
+                <!--// End Main Search Wrap-->
+                <!-- Traveller Controller -->
+                <div class="traveller-wrap">
+                    <!--Traveller-search-block -->
+                    <h3 class="acting-link is-inline collapsed" data-toggle="collapse" data-target="#ui-flow--traveller-control-wrap">
+                        Traveller details <span class="hhicon hhicon-toggle-arrow"></span>
+                    </h3>
+                    <div class="collapse" id="ui-flow--traveller-control-wrap">
+                        <!--Traveller-search-block -->
+                        <div class="traveller-search-block" id="travButtonBlk">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="has-margin-xs-vertical">No traveller has been added to this booking.</p>
+                                    <div class="multiple-btns has-margin-bottom">
+                                        <button type="button" class="btn btn-info" id="myAnchor" data-toggle="modal" data-target="#traveller-result">Search existing traveller</button>
+                                        <button type="button" class="btn btn-link" id="addNewTravbtn" onClick="javascript:$('#travButtonBlk').addClass('collapse'); $('#SearchHotel').hide(); $('#EditTraveller').addClass('in');">
+                                            <span aria-hidden="true" class="hhicon-plus col-no-align"></span> Add new traveller
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--// End Traveller-search-block -->
+                        <!-- View Traveller Block-->
+                        <div class="row view-traveller-block collapse" id="ViewTraveller">
+                            <div class="col-md-12">
+                                <div class="row" id="moreBlk1">
+                                    <button type="button" class="btn btn-link pull-right" id="addMoreBtn" onClick="javascript:if( $('#EditTraveller').is(':visible')  ) { alert('You cannot select more than 1 for this booking. You can change travellers by removing and adding a different traveller. For additional travellers, please increase the number of rooms by editing the search request.') } else { $('#EditTraveller').addClass('in'); $('#SearchHotel').hide();  }">
+                                        <span aria-hidden="true" class="hhicon-plus col-no-align"></span> Add more travellers
+                                    </button>
+                                </div>
+                                <div class="white-bg has-border has-margin-xs-bottom lyt-shadow-normal">
+                                    <ul class="traveller-list primary-bg has-no-margin-bottom">
+                                        <li>
+                                            <div class="has-margin-xs-top pull-right neutral-link">
+                                                <a title="Delete traveller from this booking" href="javascript:void(0);" onClick="javascript:alert('This traveller will be removed. Are you sure?');$('#ViewTraveller').addClass('collapse');$('#ViewTraveller').removeClass('in'); if ($('#EditTraveller').is(':visible') ) { } else { $('#travButtonBlk').addClass('in'); } ">
+                                                    <span aria-hidden="true" class="hhicon-remove has-margin-xs-horizontal"></span>
+                                                </a>
+                                                <a title="Edit this traveller" href="javascript:void(0);" id="edit-traveller-sub-trigger" onClick="javascript:$('#EditTraveller').addClass('in');$('#ViewTraveller').addClass('collapse');$('#ViewTraveller').removeClass('in');$('#SearchHotel').hide();">
+                                                    <span aria-hidden="true" class="hhicon-pencil"></span>
+                                                </a>
+                                            </div>
+                                            <p title="Click to expand traveller details" class="acting-link" id="TravDetails" onClick="javascript:$('#up').toggleClass('in');$('#down').toggleClass('collapse');">
+                                                <em id="down" class="glyphicon glyphicon-arrow-down traveller-expand"></em>
+                                                <em id="up" class="glyphicon glyphicon-arrow-up traveller-expand collapse"></em> Joe Bloggs <span class="text-muted"> joebloggs@gmail.com </span>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                    <div class="container-fluid has-padding collapse" id="viewTravDetails">
+                                        <h5 class="acting-link" data-toggle="collapse" data-target="#view-contact-info">
+                                            Contact information <span class="hhicon hhicon-toggle-arrow"></span>
+                                        </h5>
+                                        <div class="collapse in" id="view-contact-info">
+                                            <dl class="dl-horizontal dl-text-left dl-lg">
+                                                <dt> Primary email </dt>
+                                                <dd>travelleremail@gmail.com </dd>
+                                                <dt> Other email</dt>
+                                                <dd>anothertravelleremail@gmail.com</dd>
+                                                <dt> Telephone </dt>
+                                                <dd>+91 (0) 80 4240 8700 </dd>
+                                            </dl>
+                                        </div>
+                                        <h5 class="acting-link collapsed" data-toggle="collapse" data-target="#view-traveller-pref">
+                                            Traveller preferences <span class="hhicon hhicon-toggle-arrow"></span>
+                                        </h5>
+                                        <div class="collapse" id="view-traveller-pref">
+                                            <p class="form-control-static">Non-smoking rooms, Low floor, Away from elevators, Wheelchair accessible</p>
+                                        </div>
+                                        <h5 class="acting-link collapsed" data-toggle="collapse" data-target="#view-hotel-loyalty">
+                                            Hotel loyalty schemes <span class="hhicon hhicon-toggle-arrow"></span>
+                                        </h5>
+                                        <div class="collapse" id="view-hotel-loyalty">
+                                            <dl class="dl-horizontal dl-text-left dl-lg">
+                                                <dt> Loyalty programs</dt>
+                                                <dd>Abba Hoteles (AB)</dd>
+                                                <dt>Membership number</dt>
+                                                <dd>2154010</dd>
+                                            </dl>
+                                        </div>
+                                        <h5 class="acting-link collapsed" data-toggle="collapse" data-target="#view-payment-guarantee">Payment and guarantee <span class="hhicon hhicon-toggle-arrow"></span></h5>
+                                        <div class="collapse" id="view-payment-guarantee">
+                                            <dl class="dl-horizontal dl-text-left dl-lg">
+                                                <dt>Payment mode</dt>
+                                                <dd>CF Virtual card</dd>
+                                                <dt>Payment type</dt>
+                                                <dd>CF Charge Back Service Only</dd>
+                                                <dt>Threshold amount</dt>
+                                                <dd>1.47 EUR</dd>
+                                            </dl>
+                                        </div>
+                                        <h5 class="acting-link collapsed" data-toggle="collapse" data-target="#view-payment-remarks">Payment remarks <span class="hhicon hhicon-toggle-arrow"></span></h5>
+                                        <div class="collapse" role="form" id="view-payment-remarks">
+                                            <p class="form-control-static">Payment agency</p>
+                                        </div>
+                                        <h5 class="acting-link collapsed" data-toggle="collapse" data-target="#view-trav-spec-remarks">Traveller specific remarks <span class="hhicon hhicon-toggle-arrow"></span></h5>
+                                        <div class="collapse" role="form" id="view-trav-spec-remarks">
+                                            <p class="form-control-static">N/A</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--// End Col-md-8-->
+                        </div>
+                        <!--// End View Traveller Block-->
+                        <!-- Edit this Traveller Starts -->
+                        <div class="collapse has-margin-vertical lyt-shadow-normal" id="EditTraveller">
+                            <!--<form role="form">-->
+                            <div class="block primary-bg">
+                                <div class="pull-right has-margin-xs-vertical">
+                                    <button type="button" class="btn btn-default btn-block btn-xs" onClick="javascript:alert('This traveller will be removed. Are you sure?');$('#EditTraveller').addClass('collapse');$(this).closest('[id^=EditTraveller]').removeClass('in'); if ($('#ViewTraveller').is(':visible') ) { } else { $('#travButtonBlk').addClass('in'); } $('#SearchHotel').show();">
+                                        <span class="hhicon-remove"></span> Remove
+                                    </button>
+                                </div>
+                                <div class="traveller-list has-no-margin-bottom">
+                                    <img src="media/images/traveller.png" class="pull-left">
+                                    <p>
+                                        Joe Bloggs <span class="text-muted"> joebloggs@gmail.com </span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!--// End Block with secondary bg-->
+                            <div class="block white-bg">
+                                <div class="row">
+                                    <div class="form-group col-md-2 col-lg-1 ">
+                                        <label for="nights" class="label-sel">Title</label>
+                                        <select class="form-control sel">
+                                            <option value="1"></option>
+                                            <option value="2">Mr</option>
+                                            <option value="3">Mrs</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3 col-lg-2 ">
+                                        <label for="fn1">First name<span class="text-danger">*</span></label>
+                                        <input id="fn1" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-3 col-lg-2 ">
+                                        <label for="ln1">Last name <span class="text-danger">*</span></label>
+                                        <input id="ln1" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-2 col-lg-1 ">
+                                        <label for="nights" class="label-sel">Rooms</label>
+                                        <select class="form-control sel">
+                                            <option value="1"></option>
+                                            <option value="2">01</option>
+                                            <option value="3">02</option>
+                                            <option value="4">03</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4 col-lg-3 ">
+                                        <label for="ne">Notification email <span class="text-danger">*</span></label>
+                                        <input id="ne" type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group col-md-3 col-lg-2">
+                                        <label for="usethis" class="has-margin-lg-top">
+                                            <input type="checkbox" value="" id="usethis">
+                                            Use this email id
+                                        </label>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="is-inline-block collapsed acting-link" data-toggle="collapse" data-target="#contact-info">
+                                        Contact information <span class="hhicon hhicon-toggle-arrow"></span>
+                                    </h5>
+                                    <div id="contact-info" class="collapse">
+                                        <p>Please select email ids where you would like to receive correspondence</p>
+                                        <div class="row">
+                                            <div class="form-group col-sm-3 ">
+                                                <label for="primaryEmail">Primary email</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon dft-icon-style">
+                                                        <input type="checkbox" id="pri">
+                                                    </span>
+                                                    <div class="relative">
+                                                        <input type="text" class="form-control" id="primaryEmail">
+                                                    </div>
+                                                </div>
+                                                <!-- /input-group -->
+                                            </div>
+                                            <div class="form-group col-sm-3 ">
+                                                <label for="othrMail">Other email</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon dft-icon-style">
+                                                        <input type="checkbox" id="oth">
+                                                    </span>
+                                                    <div class="relative">
+                                                        <input type="text" class="form-control" id="othrMail">
+                                                    </div>
+                                                </div>
+                                                <!-- /input-group -->
+                                            </div>
+                                            <div class="form-group col-sm-3  collapse" id="add-other-email">
+                                                <label for="othrMail">Other email 2</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-addon dft-icon-style">
+                                                        <input type="checkbox" id="oth2">
+                                                    </span>
+                                                    <div class="relative">
+                                                        <input type="text" class="form-control" id="othrMail" placeholder="">
+                                                    </div>
+                                                </div>
+                                                <!-- /input-group -->
+                                            </div>
+                                            <div class="form-group col-sm-2">
+                                                <div class="has-margin-xs-vertical has-margin-lg-top">
+                                                    <a href="#" onClick="javascript:$('#add-other-email').addClass('in');$(this).parent().hide();">
+                                                        Add new email
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group col-sm-3 ">
+                                                <label>Telephone</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-btn">
+                                                        <button type="button" class="btn btn-default dropdown-toggle dft-icon-style" data-toggle="dropdown">
+                                                            US (+1) <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li>
+                                                                <a href="#">
+                                                                    CH (+86)
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    FR (+33)
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    IN (+91)
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    UK (+44)
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!-- /btn-group -->
+                                                    <div class="relative">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <!-- /input-group -->
+                                            </div>
+                                            <div class="form-group col-sm-3 Correspondence language ">
+                                                <label>Mobile</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-btn">
+                                                        <button type="button" class="btn btn-default dropdown-toggle dft-icon-style" data-toggle="dropdown">
+                                                            FR (+33) <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li>
+                                                                <a href="#">
+                                                                    China (+86)
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    India (+91)
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    United Stated (+1)
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="#">
+                                                                    United kingdom (+44)
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <!-- /btn-group -->
+                                                    <div class="relative">
+                                                        <input type="text" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <!-- /input-group -->
+                                            </div>
+                                            <div class="form-group col-sm-3 ">
+                                                <label for="nights" class="label-sel">Correspondence language</label>
+                                                <select class="form-control sel">
+                                                    <option value="1"></option>
+                                                    <option value="2"> English </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="is-inline-block acting-link collapsed" data-toggle="collapse" data-target="#traveller-pref">
+                                        Traveller preferences <span class="hhicon hhicon-toggle-arrow"></span>
+                                    </h5>
+                                    <div class="row collapse" id="traveller-pref">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <div class="radio">
+                                                        <label for="sr">
+                                                            <input type="radio" id="sr" name="radio-group-1">
+                                                            Smoking room
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <div class="radio">
+                                                        <label for="nsr">
+                                                            <input type="radio" id="nsr" name="radio-group-1">
+                                                            Non smoking room
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <div class="radio">
+                                                        <label for="np">
+                                                            <input type="radio" id="np" name="radio-group-1">
+                                                            No Preference
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <div class="radio">
+                                                        <label for="lf">
+                                                            <input type="radio" id="lf" name="radio-group-2">
+                                                            Low floor
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <div class="radio">
+                                                        <label for="hf">
+                                                            <input type="radio" id="hf" name="radio-group-2">
+                                                            High floor
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <div class="radio">
+                                                        <label for="npf">
+                                                            <input type="radio" id="npf" name="radio-group-2">
+                                                            No Preference
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="form-group col-md-4">
+                                                    <div class="checkbox">
+                                                        <label for="tpch1">
+                                                            <input type="checkbox" id="tpch1" checked="checked">
+                                                            Away from elevators
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <div class="checkbox">
+                                                        <label for="tpch2">
+                                                            <input type="checkbox" id="tpch2" checked="checked">
+                                                            Wheelchair accessible
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <div class="checkbox">
+                                                        <label for="tpch3">
+                                                            <input type="checkbox" id="tpch3" checked="checked">
+                                                            King bed
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-md-4">
+                                                    <div class="checkbox">
+                                                        <label for="tpch4">
+                                                            <input type="checkbox" id="tpch4" checked="checked">
+                                                            Away from ice machine
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="" class="control-label"><strong>Notes</strong></label>
+                                                    <textarea rows="4" id="notes" class="form-control">King bed,Away from ice machine,Away from elevators</textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="is-inline-block acting-link collapsed" data-toggle="collapse" data-target="#hotel-loyalty">
+                                        Hotel loyalty schemes <span class="hhicon hhicon-toggle-arrow"></span>
+                                    </h5>
+                                    <div class="row collapse" id="hotel-loyalty">
+                                        <div class="form-group col-md-3 ">
+                                            <label for="mbrshp" class="label-sel">Loyalty programs</label>
+                                            <select id="loyalty" name="" class="form-control sel">
+                                                <option value="1"></option>
+                                                <option value="2">Loyalty programs</option>
+                                                <option value="3"> Select an option </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-3 ">
+                                            <label for="mbrshp">Membership number</label>
+                                            <input type="text" class="form-control" id="mbrshp" placeholder="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="is-inline-block acting-link collapsed" data-toggle="collapse" data-target="#payment-guarantee">
+                                        Payment and guarantee <span class="hhicon hhicon-toggle-arrow"></span>
+                                    </h5>
+                                    <div class="collapse" id="payment-guarantee">
+                                        <div class="row">
+                                            <div class="form-group col-md-3 ">
+                                                <label for="payment-mode" class="label-sel">Payment mode</label>
+                                                <select id="payment-mode" name="" class="form-control sel">
+                                                    <option value="1"></option>
+                                                    <option value="2">Select payment mode</option>
+                                                    <option value="3">Payment agency</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div id="cc-cards-list" class="row collapse">
+                                            <div class="col-md-10">
+                                                <div class="has-margin-xs-vertical pull-right">
+                                                    <a href="#" data-toggle="modal" data-target="#add-edit-card">
+                                                        Add new card
+                                                    </a>
+                                                </div>
+                                                <h6>Available cards</h6>
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Select</th>
+                                                                <th>Credit card number</th>
+                                                                <th>Payment type</th>
+                                                                <th>Full Name</th>
+                                                                <th>Expiry date</th>
+                                                                <th>Actions</th>
+                                                                <th>Set as default</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr id="optionsRadios1">
+                                                                <td>
+                                                                    <input type="radio" name="pop1radio1" id="2" checked>
+                                                                </td>
+                                                                <td>XXXX-XXXX-XXXX-1234</td>
+                                                                <td>
+                                                                    <select id="paymentSelect4card1" name="" class="form-control input-sm" disabled>
+                                                                        <option selected="selected" value="¥">Select payment type</option>
+                                                                        <option>B&amp;B Only</option>
+                                                                        <option>B&amp;B Only - Guarantee IATA</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>Joe Bloggs</td>
+                                                                <td>Jan 2017</td>
+                                                                <td>
+                                                                    <button class="btn btn-default btn-xs" id="editCards1" data-toggle="modal" data-target="#add-edit-card"><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+                                                                    <button class="btn btn-default btn-xs" id="deleteCards1" onClick="javascript:var r = confirm('Are you sure you want to delete this card? This action cannot undone.');if (r == true) { $(this).closest('tr').remove();}"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                                                </td>
+                                                                <td>
+                                                                    <div data-toggle="radiobuttons">
+                                                                        <button class="btn btn-info btn-xs" disabled>
+                                                                            <span class="glyphicon glyphicon-ok"></span> Yes
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="optionsRadios2">
+                                                                <td>
+                                                                    <input type="radio" name="pop1radio1" id="1">
+                                                                </td>
+                                                                <td>XXXX-XXXX-XXXX-5678</td>
+                                                                <td>
+                                                                    <select id="paymentSelect4card2" name="" class="form-control input-sm" disabled>
+                                                                        <option selected="selected" value="¥">Select payment type</option>
+                                                                        <option>B&amp;B Only</option>
+                                                                        <option>B&amp;B Only - Guarantee IATA</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>Joe Bloggs</td>
+                                                                <td>Oct 2015</td>
+                                                                <td>
+                                                                    <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#add-edit-card" id="editCards2" disabled><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+                                                                    <button class="btn btn-default btn-xs" id="deleteCards2" onClick="javascript:var r = confirm('Are you sure you want to delete this card? This action cannot undone.');if (r == true) { $(this).closest('tr').remove();}" disabled><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                                                </td>
+                                                                <td>
+                                                                    <div data-toggle="radiobuttons">
+                                                                        <button class="btn btn-xs btn-default" disabled>
+                                                                            <span class="glyphicon glyphicon-record"></span> No
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <tr id="optionsRadios3">
+                                                                <td>
+                                                                    <input type="radio" name="pop1radio1" id="3">
+                                                                </td>
+                                                                <td>XXXX-XXXX-XXXX-7890</td>
+                                                                <td>
+                                                                    <select id="paymentSelect4card3" name="" class="form-control input-sm" disabled>
+                                                                        <option selected="selected" value="¥">Select payment type</option>
+                                                                        <option>B&amp;B Only</option>
+                                                                        <option>B&amp;B Only - Guarantee IATA</option>
+                                                                    </select>
+                                                                </td>
+                                                                <td>Joe Bloggs</td>
+                                                                <td>Dec 2016</td>
+                                                                <td>
+                                                                    <button class="btn btn-default btn-xs" data-toggle="modal" data-target="#add-edit-card" id="editCards3" disabled><span class="glyphicon glyphicon-pencil"></span> Edit</button>
+                                                                    <button class="btn btn-default btn-xs" onClick="javascript:alert('This card cannot be deleted');" id="deleteCards3" disabled><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                                                </td>
+                                                                <td>
+                                                                    <div data-toggle="radiobuttons">
+                                                                        <button class="btn btn-xs btn-default" disabled>
+                                                                            <span class="glyphicon glyphicon-record"></span> No
+                                                                        </button>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="is-inline-block acting-link collapsed" data-toggle="collapse" data-target="#payment-remarks">
+                                        Payment remarks <span class="hhicon hhicon-toggle-arrow"></span>
+                                    </h5>
+                                    <div class="row collapse" id="payment-remarks">
+                                        <div class="form-group col-md-6 ">
+                                            <label for="mc">Maximum 3000 characters</label>
+                                            <textarea rows="3" id="mc" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h5 class="is-inline-block acting-link collapsed" data-toggle="collapse" data-target="#trav-spec-remarks">
+                                        Traveller specific remarks <span class="hhicon hhicon-toggle-arrow"></span>
+                                    </h5>
+                                    <div class="row collapse" id="trav-spec-remarks">
+                                        <div class="form-group col-md-6 ">
+                                            <label for="arft">Add remarks for traveller</label>
+                                            <textarea rows="3" id="arft" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="text-center has-margin-vertical">
+                                        <button type="submit" class="btn btn-default " onClick="javascript:$('#ViewTraveller').addClass('in');$('#travButtonBlk').removeClass('in');$('#travButtonBlk').addClass('collapse');$(this).closest('[id^=EditTraveller]').removeClass('in'); $('#SearchHotel').show();">Cancel</button>
+                                        <button type="" class="btn btn-primary " onClick="javascript:$('#ViewTraveller').addClass('in');$('#travButtonBlk').removeClass('in');$('#travButtonBlk').addClass('collapse');$(this).closest('[id^=EditTraveller]').removeClass('in');$('#SearchHotel').show();">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--// End Block-->
+                            <!--</form>-->
+                        </div>
+                        <!--// End Edit this Traveller-->
+
+                    </div>
+                </div>
+                <!--// End Traveller Controller -->
+
+                <div class="center-block text-center has-margin-vertical" id="SearchHotel">
+                    <!-- Split button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary btn-lg" onClick="window.location.href='step2.html'">
+                            <span>Show available hotels only</span>
+                        </button>
+                        <button type="button" class="btn btn-primary btn-lg dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu text-left nopadding pull-right">
+                            <li>
+                                <a href="step2.html">
+                                    Show all hotels
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <!-- // End .Section Search -->
+        </div>
+        <!-- // End .container -->
+        <footer>
+            <div class="container-fluid">
+                <div class="footer-logo">
+                    <!-- Footer Logo here -->
+                </div>
+                <p class="hidden-xs">
+                    v11.0 | © 2015
+                    <a href="http://travelcentrictechnology.com/" target="_blank">
+                        travel centric technology pvt ltd
+                    </a>
+                    . all rights reserved.<br>
+                    users of this site agree to be bound by the terms of the
+                    <a href="http://travelcentrictechnology.com/" target="_blank">
+                        travel centric technology pvt ltd
+                    </a>
+                    website.
+                </p>
+            </div>
+        </footer>
+        <!--
+        ********************
+        *** MODAL POPUPS ***
+        ********************
+        -->
+        <!-- Change Agency Modal -->
+        <div class="modal fade" id="change-agency" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">Agency</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="has-margin-bottom">
+                            <form class="form-inline" role="form">
+                                <div class="row label-issue">
+                                    <div class="col-lg-12">
+                                        <div class="form-group ">
+                                            <label for="Agency2">Agency</label>
+                                            <input type="text" class="form-control" id="Agency2">
+                                        </div>
+                                        <button type="button" class="btn btn-info">Search</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="responsive">
+                            <table class="table table-hover table-condensed">
+                                <tbody>
+                                    <tr>
+                                        <th>Select</th>
+                                        <th>Reference</th>
+                                        <th>Name</th>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio2" id="ag1">
+                                        </td>
+                                        <td>TAP22</td>
+                                        <td>Test agency loka</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio2" id="ag2">
+                                        </td>
+                                        <td>TAP22</td>
+                                        <td>Test agency loka</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio2" id="ag3">
+                                        </td>
+                                        <td>TAP22</td>
+                                        <td>Test agency loka</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio2" id="ag4">
+                                        </td>
+                                        <td>TAP22</td>
+                                        <td>Test agency loka</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio2" id="ag5">
+                                        </td>
+                                        <td>TAP22</td>
+                                        <td>Test agency loka</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio2" id="ag6">
+                                        </td>
+                                        <td>TAP22</td>
+                                        <td>Test agency loka</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio2" id="ag7">
+                                        </td>
+                                        <td>TAP22</td>
+                                        <td>Test agency loka</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right">
+                            <div class="pagination-block">
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-default ">
+                                        <span aria-hidden="true" class="hhicon-backward"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-default ">
+                                        <span aria-hidden="true" class="hhicon-previous"></span>
+                                    </button>
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            Page 1 of 4 <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu has-min-width-sm" role="menu">
+                                            <li>
+                                                <a href="#">
+                                                    01
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    02
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    03
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    04
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button type="button" class="btn btn-default ">
+                                        <span aria-hidden="true" class="hhicon-next"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-default ">
+                                        <span aria-hidden="true" class="hhicon-forward"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary " data-dismiss="modal">Select agency</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // End Change Agency Modal -->
+        <!-- Agency OID Modal -->
+        <div class="modal fade" id="agency-oid" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">Agency</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Displaying 1-10 of 200 results</h6>
+                        <div class="responsive">
+                            <table class="table table-hover">
+                                <tbody>
+                                    <tr>
+                                        <th>Select</th>
+                                        <th>Available OID</th>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio3" id="ag8">
+                                        </td>
+                                        <td>BODHX2107</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio3" id="ag9">
+                                        </td>
+                                        <td>BODHX2107</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio3" id="ag10">
+                                        </td>
+                                        <td>BODHX2107</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio3" id="ag11">
+                                        </td>
+                                        <td>BODHX2107</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio3" id="ag12">
+                                        </td>
+                                        <td>BODHX2107</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio3" id="ag13">
+                                        </td>
+                                        <td>BODHX2107</td>
+                                    </tr>
+                                    <tr class="acting-link">
+                                        <td>
+                                            <input type="radio" name="pop1radio3" id="ag14">
+                                        </td>
+                                        <td>BODHX2107</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="pagination-block pull-right">
+                            <div class="btn-group btn-group-sm">
+                                <button type="button" class="btn btn-default ">
+                                    <span aria-hidden="true" class="hhicon-backward"></span>
+                                </button>
+                                <button type="button" class="btn btn-default ">
+                                    <span aria-hidden="true" class="hhicon-previous"></span>
+                                </button>
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        Page 1 of 4 <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu has-min-width-sm" role="menu">
+                                        <li>
+                                            <a href="#">
+                                                01
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                02
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                03
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                04
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <button type="button" class="btn btn-default ">
+                                    <span aria-hidden="true" class="hhicon-next"></span>
+                                </button>
+                                <button type="button" class="btn btn-default ">
+                                    <span aria-hidden="true" class="hhicon-forward"></span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox">
+                                Set as default OID
+                            </label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary " data-dismiss="modal">Select OID</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // End Agency OID Modal -->
+        <!-- PNR Read Modal -->
+        <div class="modal fade" id="pnr-read-2" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">PNR-53EYP9</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="block">
+                            <form class="form" role="form">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="8">
+
+                                            1.1BLOGGS/JOE
+                                            NO ITIN
+                                            PHONES
+                                            1.LONFR33950518635-A
+                                            CUSTOMER NUMBER - TESTSABRE0
+                                            ADDRESS
+                                            TRAVELNOW
+                                            50, AVENUE DES TERNES
+                                            PARIS
+                                            75017
+                                            AA FACTS
+                                            1.OSI AA HHL YX CXL BY 1 DAY PRIOR TO ARRIVAL-FEE 1 NIGHT-
+                                            2.OSI AA HHL YX INCL TAX-FEES-CANCELLATION BEFORE 2PM LOCAL
+                                            3.OSI AA HHL YX LGW 42305   /CX-27523SB012630X
+                                            REMARKS
+                                            1.H‡HHB-*H01*CXL/BOOKING CANCELLED-V140010909-1
+                                            RECEIVED FROM - THOMAS
+                                            6X3G.6X3G*AWS 0354/19MAR14 OUJEMA H
+
+                                            History
+
+                                            XS   HHL YX 19JUN SS/HK1  LGW  -OUT20JUN 1NT              /DCYX
+                                            42305 LONDON BRIDGE HOTEL 1C1DAMX -1/  210.00GBP/CMN-C/C
+                                            MT-COMMISSIONABLE - 8.00 PERCENT/TAC-8.00 PCT/AGT91228524/
+                                            GVIXXXXXXXXXXXX1111EXP 12 15-TCT TEST/C01D/SI-*H01*-CF-275
+                                            23SB012629-
+                                            X3O* OSI YX HHL   42305 C1DAMX  D PREFERRED EXTRAS AMEX RATE
+
+                                            X3O* OSI YX HHL   42305 C1DAMX  D STANDARD QUEEN BED AC MINIBAR
+
+                                            X3O* OSI YX HHL   42305 C1DAMX  D WATER TEA COFFEE FLATSCREEN T
+                                            V
+                                            X3O* OSI YX HHL   42305 C1DAMX  TTX 42.00 TTL TAX
+                                            X3O* OSI YX HHL   42305 C1DAMX  TX 42.00 VAT GST TAX
+                                            X3O* OSI YX HHL   42305 C1DAMX  TP 252.00 GBP APPROX. TTL PRICE
+                                            X3O* OSI YX HHL   42305 C1DAMX  TD INCLUDES TAXES AND SURCHARGE
+                                            S
+                                            A4O  OSI AA HHL YX LGW 42305   /CX-27523SB012630X
+                                            R-   BLOGGS
+                                            6X3G 6X3G*AWS 0400/19MAR14
+                                            A9   LONFR33950518635-A
+                                            AW   TRAVELNOW
+                                            AW   50, AVENUE DES TERNES
+                                            AW   PARIS
+                                            AW   75017
+                                            A4O  OSI AA HHL YX CXL BY 1 DAY PRIOR TO ARRIVAL-FEE 1 NIGHT-
+                                            A4O  OSI AA HHL YX INCL TAX-FEES-CANCELLATION BEFORE 2PM LOCAL
+                                            AN   1BLOGGS/JOE
+                                            AS   HHL YX 19JUN SS/HK1  LGW  -OUT20JUN 1NT              /DCYX
+                                            42305 LONDON BRIDGE HOTEL 1C1DAMX -1/  210.00GBP/CMN-C/C
+                                            MT-COMMISSIONABLE - 8.00 PERCENT/TAC-8.00 PCT/AGT91228524/
+                                            GVIXXXXXXXXXXXX1111EXP 12 15-TCT TEST/C01D/SI-*H01*-CF-275
+                                            23SB012629-
+                                            R-   BLOGGS
+                                            6X3G 6X3G*AWS 0354/19MAR14
+
+
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <button type="button" class="btn btn-primary center-block" data-dismiss="modal">Use this PNR</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // End PNR Read Modal -->
+        <!-- Map model -->
+        <div class="modal fade" id="MapModel" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">Map Search</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mapType-txtbox ">
+                            <div class="row label-issue">
+                                <div class="col-lg-12">
+                                    <div class="input-group form-group ">
+                                        <input type="text" class="form-control" id="pnr" placeholder="Type Location">
+                                        <span class="input-group-btn" data-toggle="tooltip" title="" data-original-title="Search" rel="tooltip" data-placement="bottom">
+                                            <button type="button" class="btn btn-primary " data-dismiss="modal">Done</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <form class="form" role="form">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.84916296526!2d77.63093949999997!3d12.953997399999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sBengaluru%2C+Karnataka!5e0!3m2!1sen!2sin!4v1421400316579" width="100%" height="600px" frameborder="0" style="border:0"></iframe>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="form-group">
+                            <div class="col-sm-4"></div>
+                            <div class="col-sm-4">
+                                <div class="center-block">
+                                    <p class="range-field">
+                                        <input type="range" id="test5" min="0" max="100" />
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-sm-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Map Model ENDS -->
+        <!-- Traveller Search Result Modal -->
+        <div class="modal fade" id="traveller-result" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">Add a traveller to this booking</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-inline has-margin-bottom" role="form" action="javascript:void(0)">
+                            <div class="row label-issue">
+                                <div class="col-lg-12">
+                                    <div class="form-group ">
+                                        <label for="tie">Type in email or last name</label>
+                                        <input type="text" class="form-control width-lg" id="tie">
+                                    </div>
+                                    <button type="submit" class="btn btn-info">Search</button>
+                                    <p class="pull-right">
+                                        <strong>3</strong> travellers selected
+                                        <a href="#">
+                                            view
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>First name</th>
+                                        <th>Last name</th>
+                                        <th>Email</th>
+                                        <th>Notification Email</th>
+                                        <th>Telephone</th>
+                                        <th>Emp.Ref</th>
+                                        <th>Customer Ref</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Joe</td>
+                                        <td>Bloggs</td>
+                                        <td>joebloggs@gmail.com</td>
+                                        <td>newjoebloggs@gmail.com</td>
+                                        <td>+91 (0) 80 4240 8700</td>
+                                        <td>M4L5SE</td>
+                                        <td>210488601</td>
+                                        <td>
+                                            <a href="#" class="traveller-toggle-btn active">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fred</td>
+                                        <td>Bloggs</td>
+                                        <td>joebloggs@gmail.com</td>
+                                        <td>newjoebloggs@gmail.com</td>
+                                        <td>+91 (0) 80 4240 8700</td>
+                                        <td>M4L5SE</td>
+                                        <td>210488601</td>
+                                        <td>
+                                            <a href="#" class="traveller-toggle-btn ">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Joe</td>
+                                        <td>Black</td>
+                                        <td>joebloggs@gmail.com</td>
+                                        <td>newjoebloggs@gmail.com</td>
+                                        <td>+91 (0) 80 4240 8700</td>
+                                        <td>M4L5SE</td>
+                                        <td>210488601</td>
+                                        <td>
+                                            <a href="#" class="traveller-toggle-btn">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Joe</td>
+                                        <td>Bloggs</td>
+                                        <td>joebloggs@gmail.com</td>
+                                        <td>newjoebloggs@gmail.com</td>
+                                        <td>+91 (0) 80 4240 8700</td>
+                                        <td>M4L5SE</td>
+                                        <td>210488601</td>
+                                        <td>
+                                            <a href="#" class="traveller-toggle-btn">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Fred</td>
+                                        <td>Bloggs</td>
+                                        <td>joebloggs@gmail.com</td>
+                                        <td>newjoebloggs@gmail.com</td>
+                                        <td>+91 (0) 80 4240 8700</td>
+                                        <td>M4L5SE</td>
+                                        <td>210488601</td>
+                                        <td>
+                                            <a href="#" class="traveller-toggle-btn">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Joe</td>
+                                        <td>Black</td>
+                                        <td>joebloggs@gmail.com</td>
+                                        <td>newjoebloggs@gmail.com</td>
+                                        <td>+91 (0) 80 4240 8700</td>
+                                        <td>M4L5SE</td>
+                                        <td>210488601</td>
+                                        <td>
+                                            <a href="#" class="traveller-toggle-btn">
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="text-right">
+                            <div class="pagination-block">
+                                <div class="btn-group btn-group-sm">
+                                    <button type="button" class="btn btn-default ">
+                                        <span aria-hidden="true" class="hhicon-backward"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-default ">
+                                        <span aria-hidden="true" class="hhicon-previous"></span>
+                                    </button>
+                                    <div class="btn-group btn-group-sm">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                            Page 1 of 4 <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu has-min-width-sm" role="menu">
+                                            <li>
+                                                <a href="#">
+                                                    01
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    02
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    03
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    04
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <button type="button" class="btn btn-default ">
+                                        <span aria-hidden="true" class="hhicon-next"></span>
+                                    </button>
+                                    <button type="button" class="btn btn-default ">
+                                        <span aria-hidden="true" class="hhicon-forward"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary " id="selected-traveller-trigger" data-dismiss="modal" onClick="javascript:$('#ViewTraveller').addClass('in');$('#travButtonBlk').removeClass('in');$('#travButtonBlk').addClass('collapse');">Add selected travellers</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- // End Traveller Search Result Modal -->
+        <div class="modal fade" id="add-edit-card" tabindex="-1" role="dialog" aria-labelledby="app-settings-label" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">Card details</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" id="add-new-card">
+                            <div class="form-group col-sm-2 ">
+                                <label class="label-sel" for="1">Card type <span class="text-danger">*</span></label>
+                                <select name="" class="form-control sel" id="1">
+                                    <option value="1"></option>
+                                    <option> Select card type </option>
+                                </select>
+                            </div>
+                            <div class="form-group col-sm-2 ">
+                                <label for="2">
+                                    Card number <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="2" maxlength="16">
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="row">
+                                    <div class="col-sm-6 form-group  ">
+                                        <label for="3" class="label-sel">MM <span class="text-danger">*</span></label>
+                                        <select name="" class="form-control sel" id="3">
+                                            <option value="1"></option>
+                                            <option> MM </option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-6 form-group ">
+                                        <label for="4" class="label-sel">YYYY <span class="text-danger">*</span></label>
+                                        <select name="" class="form-control sel" id="4">
+                                            <option value="1"></option>
+                                            <option> YYYY </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-2 ">
+                                <label for="5">Name on card <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="5" value="">
+                            </div>
+                            <div class="form-group col-sm-1 ">
+                                <label for="6">CVV <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="6" maxlength="4">
+                            </div>
+                            <div class="form-group col-sm-2 ">
+                                <div class="radio">
+                                    <input type="checkbox" name="pop1radio1" id="123">
+                                    <label for="123">Set as default</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary " data-dismiss="modal">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="upcoming-events-model" tabindex="-1" role="dialog" aria-labelledby="app-settings-label" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">More events</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="event-book-list">
+                            <li>
+                                <a href="#">
+                                    <span class="pull-right">GBP <strong>270.00</strong></span>
+                                    <p>
+                                        Renaissance Le Parc Trocadero <span class="text-muted">4 star &mdash; 26-May-2014</span>
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="pull-right">GBP <strong>150.00</strong></span>
+                                    <p>
+                                        Shangri La Hotel Paris <span class="text-muted">4 star &mdash; 19-Apr-2014</span>
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="pull-right">GBP <strong>170.00</strong></span>
+                                    <p>
+                                        Villa And Hotel Majestic <span class="text-muted">3 star &mdash; 07-Mar-2014</span>
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        @*<button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary " data-dismiss="modal">Save</button>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="Spa-model" tabindex="-1" role="dialog" aria-labelledby="app-settings-label" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">More Spa</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="event-book-list" id="ul_SpaList">
+
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="visiting-place-model" tabindex="-1" role="dialog" aria-labelledby="app-settings-label" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">More visiting place</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="event-book-list" id="ul_visitingList">
+                            
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        @*<button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary " data-dismiss="modal">Save</button>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="near-by-resturant-model" tabindex="-1" role="dialog" aria-labelledby="app-settings-label" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">More resturants</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="event-book-list">
+                            <li>
+                                <a href="#">
+                                    <span class="pull-right">GBP <strong>270.00</strong></span>
+                                    <p>
+                                        Renaissance Le Parc Trocadero <span class="text-muted">4 star &mdash; 26-May-2014</span>
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="pull-right">GBP <strong>150.00</strong></span>
+                                    <p>
+                                        Shangri La Hotel Paris <span class="text-muted">4 star &mdash; 19-Apr-2014</span>
+                                    </p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <span class="pull-right">GBP <strong>170.00</strong></span>
+                                    <p>
+                                        Villa And Hotel Majestic <span class="text-muted">3 star &mdash; 07-Mar-2014</span>
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        @*<button type="button" class="btn btn-default " data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary " data-dismiss="modal">Save</button>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade in" id="near-by-resturant-model_old" tabindex="-1" role="dialog"
+             aria-hidden="true" style="overflow: scroll; display: none;">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content ">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times-circle"></i></span></button>
+                        <h4 class="modal-title text-center">
+                            <span class="scholar-topi"> <strong>More resturants</strong></span>
+                        </h4>
+                    </div>
+                    <div class="panel panel-danger">
+                        <div class="panel-body">
+                            <ul class="event-book-list">
+                                <li>
+                                    <a href="#">
+                                        <span class="pull-right">GBP <strong>270.00</strong></span>
+                                        <p>
+                                            Renaissance Le Parc Trocadero <span class="text-muted">4 star &mdash; 26-May-2014</span>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="pull-right">GBP <strong>150.00</strong></span>
+                                        <p>
+                                            Shangri La Hotel Paris <span class="text-muted">4 star &mdash; 19-Apr-2014</span>
+                                        </p>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <span class="pull-right">GBP <strong>170.00</strong></span>
+                                        <p>
+                                            Villa And Hotel Majestic <span class="text-muted">3 star &mdash; 07-Mar-2014</span>
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Full Height Modal Right -->
+        <div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+
+            <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+            <div class="modal-dialog modal-full-height modal-left" role="document">
+
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">More Restaurants</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="event-book-list" id="ul_resturantList"></ul>
+                    </div>
+                    @*<div class="modal-footer justify-content-center">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>*@
+                </div>
+            </div>
+        </div>
+        <!-- Full Height Modal Right -->
+
+        <div class="modal fade right" id="sideModalTRSuccessDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+
+            <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+            <div class="modal-dialog modal-full-height modal-left" role="document">
+
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true" class="hhicon-cancel"></span>
+                        </button>
+                        <h4 class="modal-title">More Events</h4>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="event-book-list" id="ul_eventList"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="modal fade right" id="SendPushNotification" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="true" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-side modal-top-right modal-notify modal-success" role="document">
+                <!--Content-->
+                <div class="modal-content">
+                    <!--Header-->
+                    <div class="modal-header">
+                        <p class="heading lead">Push Notification</p>
+
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">×</span>
+                        </button>
+                    </div>
+
+                    <!--Body-->
+                    <div class="modal-body">
+                        <form action="" method="POST" role="form">
+                            <div class="form-group">
+                                <label for="">Title</label>
+                                <input type="text" class="form-control" id="title" placeholder="Write some title here" required>
+                                <label for="">Message</label>
+                                <textarea placeholder="Write some message here" id="message" class="form-control" required></textarea>
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!--Footer-->
+                    <div class="modal-footer justify-content-center">
+                        <button type="submit" id="btnNotifySMS" class="btn btn-success"> <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Notify</button>
+                        <a type="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">No, thanks</a>
+                    </div>
+                </div>
+                <!--/.Content-->
+            </div>
+        </div>
+    </div>
+    <!-- // End .fake-body -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/hotelhub/material.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- 3rd party plugins-->
+    <script src="js/plugins.js"></script>
+    <!--Jquery UI-->
+    <script src="js/ui/jquery.ui.core.js"></script>
+    <script src="js/ui/jquery.ui.widget.js"></script>
+    <script src="js/ui/jquery.ui.mouse.js"></script>
+    <script src="js/ui/jquery.ui.slider.js"></script>
+    <script src="js/jquery.tinyscrollbar.js"></script>
+    <!--Custom scripts for application and Initialize plugins-->
+    <script src="js/scripts.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="~/js/easyNotify.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $("#customer").focus();
+            $(".indicator").click(function () {
+                $(this).removeClass('indicator');
+
+
+
+
+            });
+
+        });
+        $('.styled-li li').click(function () {
+            //alert("skghsdfjk");
+            //$('.styled-li li.selected').removeClass("selected");
+            $(this).addClass("selected");
+
+        });
+
+        //$('.hhicon-download').click(function(){
+        //    $('.msgLctn').css('display','block');
+        //});
+
+        //$('#btnSendNotification').click(function () {
+
+        //});
+
+
+        function tempAlert(msg, duration) {
+            var el = document.createElement("div");
+            el.setAttribute("style", "position:absolute;top:19%;left:40%;background-color:#dff0d8;width:300px;height:50px;line-height:50px;border:1px solid #d6e9c6;color: #3c763d;text-align:center;");
+            //el.setAttribute("class","alert alert-success");
+            el.innerHTML = msg;
+            setTimeout(function () {
+                el.parentNode.removeChild(el);
+            }, duration);
+            document.body.appendChild(el);
+        }
+        //var d = document.getElementById('d');
+        //d.onclick = function () { tempAlert("location added", 1000); };
+        var searchLocation = '';
+
+       
+
+        function myFunction() {
+            $('#ul_resturant').empty();
+            $('#ul_resturantList').empty();
+            $('#ul_spa').empty();
+            $('#ul_SpaList').empty();
+            $('#Ul_upcoming-events').empty();
+            $('#ul_eventList').empty();
+            $('#ul_visitingList').empty();
+            //alert(1);
+            searchLocation = $("#Destination").val();
+   
+            LoadSpa(searchLocation);
+            LoadResturent(searchLocation);
+            LoadEvents(searchLocation);
+            LoadSights(searchLocation,null);
+            LoadWeather(searchLocation);
+        }
+
+        function LoadWeather(searchLocation) {
+            $.get("Ajax.aspx", function (respData, status) {
+                debugger;
+                var weatheData = $(respdata).find('weather');
+
+
+            });
+        }
+        //LoadSpa('Bangalore');
+
+        function LoadSpa(searchLocation) {
+            var settings = {
+                "async": true,
+                //"dataType": "json",
+                "content-type": "json",
+                "crossDomain": true,
+                "url": "https://community-eventful.p.rapidapi.com/venues/search?keywords=spa&app_key=nrhBcJLhXwxmZRx8&location=" + searchLocation,
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "community-eventful.p.rapidapi.com",
+                    "x-rapidapi-key": "73f08acdd1mshb3bf00955db182dp11da52jsn6df0d3bbc51e"
+                }
+            }
+
+            console.log(settings.url);
+
+            var htmlString = '';
+            var htmlStringAll = '';
+            $.ajax(settings).done(function (response) {
+                debugger;
+                //console.log(response);
+                var respData = response;
+
+                var filteredVenues = $(respData).find('venues').children('venue');
+               
+                $(respData).find('venues').children('venue').each(function (i, value) {
+                    let url = $(this).find('url').text();
+                    var sname = $(this).find('name').text();
+                    //console.log(sname);
+                    var svenue_name = $(this).find('venue_name').text();
+                    //console.log(svenue_name);
+                    var address = $(this).find('address').text();
+                    //console.log(address);
+                    var city_name = $(this).find('city_name').text();
+                    //console.log(city_name);
+                    var region_name = $(this).find('region_name').text();
+                    //console.log(region_name);
+                    var country_name = $(this).find('country_name').text();
+                    //console.log(svenue_name);
+                    var country_abbr2 = $(this).find('country_abbr2').text();
+                    //console.log(country_abbr2);
+                    let address_1 = address;
+                    if (address_1 == '') {
+                        address_1 = svenue_name;
+                    }
+                    if (i <= 3) {
+                        htmlString += '<li>';
+                        htmlString += '<a href="' + url + '" target="_blank">';
+                        htmlString += '<span class="pull-right"><strong>' + svenue_name + '</strong></span>';
+                        htmlString += '<p>' + address_1 + ' <span class="text-muted">' + city_name + ', ' + region_name + '</span></p>';
+                        htmlString += '</a>';
+                        htmlString += '</li>';
+                    }
+                    htmlStringAll += '<li>';
+                    htmlStringAll += '<a href="' + url + '" target="_blank">';
+                    htmlStringAll += '<span class="pull-right"><strong>' + svenue_name + '</strong></span>';
+                    htmlStringAll += '<p>' + address_1 + ' <span class="text-muted">' + city_name + ', ' + region_name + '</span></p>';
+                    htmlStringAll += '</a>';
+                    htmlStringAll += '</li>';
+
+                });
+
+                $('#ul_spa').append(htmlString);
+                $('#ul_SpaList').append(htmlStringAll);
+            });
+
+
+        }
+
+        function LoadResturent(searchLocation) {
+            var settings = {
+                "async": true,
+                //"dataType": "json",
+                "content-type": "json",
+                "crossDomain": true,
+                "url": "https://community-eventful.p.rapidapi.com/venues/search?keywords=Restaurant&app_key=nrhBcJLhXwxmZRx8&location=" + searchLocation + "&sort_order=popularity",
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "community-eventful.p.rapidapi.com",
+                    "x-rapidapi-key": "73f08acdd1mshb3bf00955db182dp11da52jsn6df0d3bbc51e"
+                }
+            }
+
+            var htmlString = '';
+            var htmlStringAll = '';
+            $.ajax(settings).done(function (response) {
+                debugger;
+                console.log(response);
+                var respData = response;
+
+                $(respData).find('venues').children('venue').each(function (i, value) {
+                    let url = $(this).find('url').text();
+                    var sname = $(this).find('name').text();
+                    //console.log(sname);
+                    var svenue_name = $(this).find('venue_name').text();
+                    //console.log(svenue_name);
+                    var address = $(this).find('address').text();
+                    //console.log(address);
+                    var city_name = $(this).find('city_name').text();
+                    //console.log(city_name);
+                    var region_name = $(this).find('region_name').text();
+                    //console.log(region_name);
+                    var country_name = $(this).find('country_name').text();
+                    //console.log(svenue_name);
+                    var country_abbr2 = $(this).find('country_abbr2').text();
+                    //console.log(country_abbr2);
+                    let address_1 = address;
+                    if (address_1 == '') {
+                        address_1 = svenue_name;
+                    }
+                    if (i <= 3) {
+                        htmlString += '<li>';
+                        htmlString += '<a href="' + url + '" target="_blank">';
+                        htmlString += '<span class="pull-right"><strong>' + svenue_name + '</strong></span>';
+                        htmlString += '<p>' + address_1 + ' <span class="text-muted">' + city_name + ', ' + region_name + '</span></p>';
+                        htmlString += '</a>';
+                        htmlString += '</li>';
+                    }
+                    htmlStringAll += '<li>';
+                    htmlStringAll += '<a href="' + url + '" target="_blank">';
+                    htmlStringAll += '<span class="pull-right"><strong>' + svenue_name + '</strong></span>';
+                    htmlStringAll += '<p>' + address_1 + ' <span class="text-muted">' + city_name + ', ' + region_name + '</span></p>';
+                    htmlStringAll += '</a>';
+                    htmlStringAll += '</li>';
+
+                });
+
+                $('#ul_resturant').append(htmlString);
+                $('#ul_resturantList').append(htmlStringAll);
+            });
+
+
+        }
+
+        function LoadEvents(searchLocation) {
+            var settings = {
+                "async": true,
+                //"dataType": "json",
+                "content-type": "json",
+                "crossDomain": true,
+                "url": "https://community-eventful.p.rapidapi.com/venues/search?keywords=events&app_key=nrhBcJLhXwxmZRx8&location=" + searchLocation + "&sort_order=popularity",
+                "method": "GET",
+                "headers": {
+                    "x-rapidapi-host": "community-eventful.p.rapidapi.com",
+                    "x-rapidapi-key": "73f08acdd1mshb3bf00955db182dp11da52jsn6df0d3bbc51e"
+                }
+            }
+
+            var htmlString = '';
+            var htmlStringAll = '';
+            $.ajax(settings).done(function (response) {
+                debugger;
+                console.log(response);
+                var respData = response;
+
+                $(respData).find('venues').children('venue').each(function (i, value) {
+                    let url = $(this).find('url').text();
+                    var sname = $(this).find('name').text();
+                    //console.log(sname);
+                    var svenue_name = $(this).find('venue_name').text();
+                    //console.log(svenue_name);
+                    var address = $(this).find('address').text();
+                    //console.log(address);
+                    var city_name = $(this).find('city_name').text();
+                    //console.log(city_name);
+                    var region_name = $(this).find('region_name').text();
+                    //console.log(region_name);
+                    var country_name = $(this).find('country_name').text();
+                    //console.log(svenue_name);
+                    var country_abbr2 = $(this).find('country_abbr2').text();
+                    //console.log(country_abbr2);
+                    let address_1 = address;
+                    if (address_1 == '') {
+                        address_1 = svenue_name;
+                    }
+                    if (i <= 3) {
+                        htmlString += '<li>';
+                        htmlString += '<a href="' + url + '" target="_blank">';
+                        htmlString += '<span class="pull-right"><strong>' + svenue_name + '</strong></span>';
+                        htmlString += '<p>' + address_1 + ' <span class="text-muted">' + city_name + ', ' + region_name + '</span></p>';
+                        htmlString += '</a>';
+                        htmlString += '</li>';
+                    }
+                    htmlStringAll += '<li>';
+                    htmlStringAll += '<a href="' + url + '" target="_blank">';
+                    htmlStringAll += '<span class="pull-right"><strong>' + svenue_name + '</strong></span>';
+                    htmlStringAll += '<p>' + address_1 + ' <span class="text-muted">' + city_name + ', ' + region_name + '</span></p>';
+                    htmlStringAll += '</a>';
+                    htmlStringAll += '</li>';
+
+                });
+
+                $('#Ul_upcoming-events').append(htmlString);
+                $('#ul_eventList').append(htmlStringAll);
+                console.log(htmlStringAll);
+            });
+
+
+        }
+        function LoadSights(searchLocation, accesstoken) {
+            var geocoder = new google.maps.Geocoder();
+            var lat;
+            var long;
+
+            geocoder.geocode({ 'address': searchLocation }, function (results, status) {
+                if (status == google.maps.GeocoderStatus.OK) {
+                    //alert("location : " + results[0].geometry.location.lat() + " " + results[0].geometry.location.lng());
+                    lat = results[0].geometry.location.lat();
+                    long = results[0].geometry.location.lng();
+                } else {
+                    alert("Something got wrong " + status);
+                }
+            });
+
+
+            setTimeout(function () {
+
+                if (accesstoken == null) {
+                    accesstoken = "r2xgRAycxKtAAhoc0KnU13ioCuOT";
+                }
+
+                var settings = {
+                    "async": true,
+                    "content-type": "json",
+                    "crossDomain": true,
+                    "url": "https://test.api.amadeus.com/v1/reference-data/locations/pois?latitude=" + lat + "&longitude=" + long + "&category=SIGHTS",
+                    "method": "GET",
+                    "headers": {
+                        "Authorization": "Bearer " + accesstoken
+                    }
+                }
+                console.log(settings.url);
+
+
+                var htmlString = '';
+
+                $.ajax(settings).fail(function (jqXHR, textStatus) {
+                    debugger;
+                    if (jqXHR.status == 401 && jqXHR.statusText == "Unauthorized") {
+                        var settings2 = {
+                            "async": true,
+                            "content-type": "json",
+                            "crossDomain": true,
+                            "data": { "grant_type": "client_credentials", "client_id": "s77oAd0cS7TFIwUgGIw5GBza3TumnDq9", "client_secret": "BtOgB1D8rb3eAlGI" },
+                            "url": "https://test.api.amadeus.com/v1/security/oauth2/token",
+                            "method": "POST",
+                            "headers": {
+                                "Content-Type": "application/x-www-form-urlencoded"
+                            }
+                        }
+                    }
+
+                    $.ajax(settings2).done(function (response) {
+                        debugger;
+                        var accesstoken = response.access_token;
+                        LoadSights($("#Destination").val(), accesstoken);
+
+                    });
+
+                    $.ajax(settings2).fail(function (jqXHR, textStatus) {
+                        debugger;
+                    });
+                });
+
+                $.ajax(settings).done(function (response) {
+                    debugger;
+
+
+                    $.each(response.data, function (i, value) {
+                        htmlString += '<li>';
+                        htmlString += '<a href="#" target="_blank">';
+                        htmlString += '<span class="pull-right"><strong>' + response.data[i].name + '</strong></span>';
+                        htmlString += '<p>' + response.data[i].tags[0] + ' <span class="text-muted">' + response.data[i].tags[1] + ', ' + response.data[i].tags[2] + '</span></p>';
+                        htmlString += '</a>';
+                        htmlString += '</li>';
+
+                    })
+
+
+                    $('#ul_sight').append(htmlString);
+
+                });
+            }, 2000);
+        }
+    </script>
+
+    <!----Required only hotelhub-v1 theme----->
+
+    <script src="js/hotelhub/common.js"></script>
+    <script src="js/ui-flow.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/bootstrap-datepickerNew.js"></script>
+    <script type="text/javascript">
+        // When the document is ready
+        $(document).ready(function () {
+
+            $('.input-daterange').datepicker({
+                todayBtn: "linked",
+                autoclose: true
+            });
+
+           
+
+            
+
+        });
+
+      
+        var myImg = "http://www.hotelhub.net/images/logo-small.png";
+        $('#btnNotifySMS').click(function () {
+            debugger;
+            var options = {
+                title: $("#title").val(),
+                options: {
+                    body: $("#message").val(),
+                    icon: myImg,
+                    lang: 'en-US',
+                    onClick: myFunction
+                }
+            };
+            //console.log(options);
+            $("#easyNotify").easyNotify(options);
+        });
+    </script>
+    <script>
+
+
+    </script>
+
+</body>
+</html>
